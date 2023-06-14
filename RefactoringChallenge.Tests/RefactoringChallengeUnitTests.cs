@@ -71,8 +71,8 @@ namespace RefactoringChallenge.Tests
         public void Get_WithSkipAndTake_ReturnsOrders()
         {
             // Arrange
-            var skip = 0;
-            var take = 4;
+            var skip = 1;
+            var take = 2;
 
             // Act
             var result = _controller.Get(skip, take);

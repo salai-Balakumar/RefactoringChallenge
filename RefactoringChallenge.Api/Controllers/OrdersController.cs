@@ -32,15 +32,19 @@ namespace RefactoringChallenge.Controllers
         [HttpGet]
         public IActionResult Get(int? skip = null, int? take = null)
         {
-            var query = _northwindDbContext.Orders;
-            if (skip != null)
+            if (skip == null)
             {
-                query.Skip(skip.Value);
-            }
-            if (take != null)
+                skip = 0;
+            }            
+            if (take == null)
             {
-                query.Take(take.Value);
+                take = _northwindDbContext.Orders.Count();
             }
+            //Added LINQ query to get result based on skip and take
+            var query = (from m in _northwindDbContext.Orders
+                         orderby m.OrderId descending
+                        select m).Skip((int)skip).Take((int)take);
+
             // Used _mapper.Config when calling ProjectToType(), To ensures consistency and clarity in the mapping process.
             var result = query.ProjectToType<OrderResponse>(_mapper.Config).ToList();
             //Ok() is more appropriate and clearer for indicating a successful response.
