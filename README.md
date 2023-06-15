@@ -5,7 +5,7 @@
 Please follow the instruction to download and setup Northwind DB for SQL Server here:
 https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases
 
-### Pre-requisites: 
+### Guidelines for Development & Deployment: 
 	1. Run the code & unit test in Developement Environment
 		1. Install Visual Studio 2022
   		2. Install any .Net SDK greater than .net core 3.1 (preferrably .net 6.0)
